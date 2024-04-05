@@ -40,17 +40,17 @@ class handDetector():
         if self.results.multi_hand_landmarks:
             myHand = self.results.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
-                print(id, lm)
+                #print(id, lm)
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
-                print("48")
+                #print("48")
                 xList.append(cx)
                 yList.append(cy)
-                print("Line 48: ",id, cx, cy)
+                #print("Line 48: ",id, cx, cy)
                 self.lmList.append([id, cx, cy])
                 if draw:
                     cv2.circle(img, (cx, cy), 5, (255, 0, 255), cv2.FILLED)
-        print("xList:", xList)
+        #print("xList:", xList)
         xmin, xmax = min(xList), max(xList)
         ymin, ymax = min(yList), max(yList)
         bbox = xmin, ymin, xmax, ymax
