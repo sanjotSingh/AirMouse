@@ -25,6 +25,7 @@ while True:
     # 1. Find hand Landmarks
     success, img = cap.read()
     img = detector.findHands(img)
+
     try:
         lmList, bbox = detector.findPosition(img)
     except:
@@ -63,6 +64,7 @@ while True:
             cv2.circle(img, (lineInfo[4], lineInfo[5]),
             15, (0, 255, 0), cv2.FILLED)
             autopy.mouse.click()
+    img=cv2.flip(img,1)
 
     # 11. Frame Rate
     cTime = time.time()
@@ -71,5 +73,6 @@ while True:
     cv2.putText(img, str(int(fps)), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,
     (255, 0, 0), 3)
 # 12. Display
-    cv2.imshow('Image', img)
+    wname = 'Image'
+    cv2.imshow(wname, img)
     cv2.waitKey(1)
